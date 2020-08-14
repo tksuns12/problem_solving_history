@@ -25,6 +25,7 @@ int main()
     for (int i = 0; i < t; ++i)
     {
         int n;
+        int min = 999999;
         cin >> n;
         vector<pair<int, int>> score;
         vector<int> seleted;
@@ -39,14 +40,20 @@ int main()
         for (pair<int, int> var : score)
         {
             if (seleted.size() == 0)
+            {
                 seleted.push_back(var.second);
+                min = var.second;
+            }
             else
             {
-                if (seleted[0] < var.second) {
+                if (min < var.second)
+                {
                     continue;
-                } else {
-                    vector<int>::iterator it = lower_bound(seleted.begin(), seleted.end(), var.second);
-                    seleted.insert(it, var.second);
+                }
+                else
+                {
+                    min = var.second;
+                    seleted.push_back(var.second);
                 }
             }
         }
@@ -54,3 +61,6 @@ int main()
         cout << seleted.size() << '\n';
     }
 }
+
+/*아 이거를 lower_bound를 안 쓰고 그냥 최소값을 계속 업데이트 했으면 시간을 훨씬 줄일 수 있었을 텐데... ㅜㅜ
+이렇게 해서 904ms에서 416ms로 줄였다.*/
