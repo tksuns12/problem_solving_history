@@ -6,5 +6,6 @@
         "iostream": "cpp",
         "vector": "cpp",
         "xiosbase": "cpp"
-    }
+    },
+    "python.pythonPath": "C:\\Python38\\python.exe"
 }
